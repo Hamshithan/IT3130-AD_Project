@@ -1,4 +1,4 @@
-package driver_vehicle_service;
+package com.example.drivervehicle;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
