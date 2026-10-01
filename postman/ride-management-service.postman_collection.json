@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "8f3b2a11-0000-4000-8000-ridemanagment",
+		"name": "Ride Management Service API",
+		"description": "Postman API Collection for RideLink Ride Management Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Create Ride Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"passengerId\": \"123e4567-e89b-12d3-a456-426614174001\",\n  \"pickupLocation\": {\n    \"placeName\": \"Negombo Bus Stand\",\n    \"latitude\": 7.2083,\n    \"longitude\": 79.8358\n  },\n  \"destinationLocation\": {\n    \"placeName\": \"Colombo Fort\",\n    \"latitude\": 6.9344,\n    \"longitude\": 79.8428\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/v1/rides",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"rides"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Get Ride by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/v1/rides/:rideId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"rides",
+						":rideId"
+					],
+					"variable": [
+						{
+							"key": "rideId",
+							"value": "123e4567-e89b-12d3-a456-426614174000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Get Rides by Passenger ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/v1/rides/passenger/:passengerId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"rides",
+						"passenger",
+						":passengerId"
+					],
+					"variable": [
+						{
+							"key": "passengerId",
+							"value": "123e4567-e89b-12d3-a456-426614174001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Get Rides by Driver ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/v1/rides/driver/:driverId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"rides",
+						"driver",
+						":driverId"
+					],
+					"variable": [
+						{
+							"key": "driverId",
+							"value": "123e4567-e89b-12d3-a456-426614174002"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Assign Driver",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"driverId\": \"123e4567-e89b-12d3-a456-426614174002\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/v1/rides/:rideId/assign",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"rides",
+						":rideId",
+						"assign"
+					],
+					"variable": [
+						{
+							"key": "rideId",
+							"value": "123e4567-e89b-12d3-a456-426614174000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Accept Ride",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/v1/rides/:rideId/accept",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"rides",
+						":rideId",
+						"accept"
+					],
+					"variable": [
+						{
+							"key": "rideId",
+							"value": "123e4567-e89b-12d3-a456-426614174000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. Start Ride",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/v1/rides/:rideId/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"rides",
+						":rideId",
+						"start"
+					],
+					"variable": [
+						{
+							"key": "rideId",
+							"value": "123e4567-e89b-12d3-a456-426614174000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Complete Ride",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/api/v1/rides/:rideId/complete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"rides",
+						":rideId",
+						"complete"
+					],
+					"variable": [
+						{
+							"key": "rideId",
+							"value": "123e4567-e89b-12d3-a456-426614174000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "9. Cancel Ride",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"cancellationReason\": \"Passenger plans changed\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8083/api/v1/rides/:rideId/cancel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"api",
+						"v1",
+						"rides",
+						":rideId",
+						"cancel"
+					],
+					"variable": [
+						{
+							"key": "rideId",
+							"value": "123e4567-e89b-12d3-a456-426614174000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
