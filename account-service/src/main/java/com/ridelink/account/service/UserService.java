@@ -2,6 +2,7 @@ package com.ridelink.account.service;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ridelink.account.dto.LoginRequest;
 import com.ridelink.account.dto.LoginResponse;
@@ -31,16 +32,18 @@ public class UserService {
         this.jwtService = jwtService;
     }
 
+    @Transactional
     public User register(RegisterRequest request) {
 
-        if (userRepository.existsByEmail(request.getEmail())) {
+        String normalizedEmail = request.getEmail() != null ? request.getEmail().trim().toLowerCase() : "";
+
+        if (userRepository.existsByEmail(normalizedEmail)) {
             throw new EmailAlreadyExistsException("Email already registered");
         }
 
         User user = new User();
-
         user.setName(request.getName());
-        user.setEmail(request.getEmail());
+        user.setEmail(normalizedEmail);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setPhone(request.getPhone());
         user.setRole(request.getRole());
@@ -48,9 +51,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    @Transactional(readOnly = true)
     public LoginResponse login(LoginRequest request) {
 
-        User user = userRepository.findByEmail(request.getEmail())
+        String normalizedEmail = request.getEmail() != null ? request.getEmail().trim().toLowerCase() : "";
+
+        User user = userRepository.findByEmail(normalizedEmail)
                 .orElseThrow(() ->
                         new UserNotFoundException("User not found"));
 
@@ -77,6 +83,7 @@ public class UserService {
         );
     }
 
+    @Transactional(readOnly = true)
     public UserResponse getUserById(Long id) {
 
         User user = userRepository.findById(id)
@@ -93,6 +100,7 @@ public class UserService {
         );
     }
 
+    @Transactional
     public UserResponse updateUser(
             Long id,
             UpdateUserRequest request) {
@@ -125,6 +133,7 @@ public class UserService {
         );
     }
 
+    @Transactional
     public void deleteUser(Long id) {
 
         User user = userRepository.findById(id)

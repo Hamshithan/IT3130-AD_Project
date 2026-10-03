@@ -71,6 +71,17 @@ public class JwtService {
         return claims.get("email", String.class);
     }
 
+    public String getRole(String token) {
+
+        Claims claims = Jwts.parser()
+                .verifyWith(secretKey)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+
+        return claims.get("role", String.class);
+    }
+
     public boolean isTokenValid(String token) {
 
         try {

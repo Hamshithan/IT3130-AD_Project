@@ -47,6 +47,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(response);
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiError> handleGenericException(Exception ex) {
+        return buildError(HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error", "An unexpected error occurred");
+    }
+
     private ResponseEntity<ApiError> buildError(HttpStatus status, String error, String message) {
         ApiError apiError = new ApiError(
                 status.value(),
