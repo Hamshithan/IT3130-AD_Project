@@ -1,37 +1,32 @@
-package com.example.drivervehicle.entity;
+package com.example.drivervehicle.dto;
 
-import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "vehicles")
-public class Vehicle {
+public class VehicleUpdateRequest {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @NotNull(message = "Driver ID is required")
     private Long driverId;
 
+    @NotBlank(message = "Vehicle type is required")
     private String vehicleType;
 
+    @NotBlank(message = "Brand is required")
     private String brand;
 
+    @NotBlank(message = "Model is required")
     private String model;
 
+    @NotBlank(message = "Registration number is required")
     private String registrationNumber;
 
+    @NotBlank(message = "Color is required")
     private String color;
 
-    public Vehicle() {
+    public VehicleUpdateRequest() {
     }
 
-    public Vehicle(Long driverId,
-                   String vehicleType,
-                   String brand,
-                   String model,
-                   String registrationNumber,
-                   String color) {
-
+    public VehicleUpdateRequest(Long driverId, String vehicleType, String brand, String model, String registrationNumber, String color) {
         this.driverId = driverId;
         this.vehicleType = vehicleType;
         this.brand = brand;
@@ -40,56 +35,48 @@ public class Vehicle {
         this.color = color;
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public Long getDriverId() {
         return driverId;
-    }
-
-    public String getVehicleType() {
-        return vehicleType;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public String getRegistrationNumber() {
-        return registrationNumber;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public void setDriverId(Long driverId) {
         this.driverId = driverId;
     }
 
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
     public void setVehicleType(String vehicleType) {
         this.vehicleType = vehicleType;
+    }
+
+    public String getBrand() {
+        return brand;
     }
 
     public void setBrand(String brand) {
         this.brand = brand;
     }
 
+    public String getModel() {
+        return model;
+    }
+
     public void setModel(String model) {
         this.model = model;
     }
 
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
     public void setRegistrationNumber(String registrationNumber) {
         this.registrationNumber = registrationNumber;
+    }
+
+    public String getColor() {
+        return color;
     }
 
     public void setColor(String color) {

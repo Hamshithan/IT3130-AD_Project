@@ -10,12 +10,16 @@ public class Driver {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private String phone;
 
+    @Column(nullable = false, unique = true)
     private String licenseNumber;
 
+    @Column(nullable = false)
     private boolean available;
 
     private String serviceArea;
@@ -34,7 +38,6 @@ public class Driver {
                   String serviceArea,
                   Double latitude,
                   Double longitude) {
-
         this.name = name;
         this.phone = phone;
         this.licenseNumber = licenseNumber;
