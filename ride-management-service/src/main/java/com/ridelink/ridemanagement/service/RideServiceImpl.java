@@ -62,7 +62,7 @@ public class RideServiceImpl implements RideService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<RideResponse> getRidesByDriverId(UUID driverId) {
+    public List<RideResponse> getRidesByDriverId(Long driverId) {
         return rideRepository.findByDriverId(driverId).stream()
                 .map(this::mapToRideResponse)
                 .collect(Collectors.toList());

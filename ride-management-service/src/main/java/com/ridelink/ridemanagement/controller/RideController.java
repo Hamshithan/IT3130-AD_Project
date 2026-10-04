@@ -58,12 +58,12 @@ public class RideController {
     }
 
     @GetMapping("/driver/{driverId}")
-    @Operation(summary = "Get driver rides", description = "Retrieves all rides assigned to or completed by a specific driver.")
-    @ApiResponse(responseCode = "200", description = "Rides retrieved successfully")
-    public ResponseEntity<List<RideResponse>> getRidesByDriverId(@PathVariable UUID driverId) {
-        List<RideResponse> responses = rideService.getRidesByDriverId(driverId);
-        return ResponseEntity.ok(responses);
-    }
+public ResponseEntity<List<RideResponse>> getRidesByDriverId(
+        @PathVariable Long driverId) {
+    List<RideResponse> responses =
+            rideService.getRidesByDriverId(driverId);
+    return ResponseEntity.ok(responses);
+}
 
     @PatchMapping("/{rideId}/assign")
     @Operation(summary = "Assign driver to ride", description = "Assigns an available driver to a ride in REQUESTED status.")

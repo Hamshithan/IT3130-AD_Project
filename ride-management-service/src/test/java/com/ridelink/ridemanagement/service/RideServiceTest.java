@@ -41,7 +41,7 @@ class RideServiceTest {
     private RideServiceImpl rideService;
 
     private UUID passengerId;
-    private UUID driverId;
+    private Long driverId;
     private UUID rideId;
     private LocationDto pickupDto;
     private LocationDto destDto;
@@ -49,7 +49,7 @@ class RideServiceTest {
     @BeforeEach
     void setUp() {
         passengerId = UUID.randomUUID();
-        driverId = UUID.randomUUID();
+        driverId = 42L;
         rideId = UUID.randomUUID();
 
         pickupDto = LocationDto.builder()

@@ -23,7 +23,7 @@ spring:
         format_sql: true
 
 jwt:
-  secret: ${JWT_SECRET:dGhpc2lzYXNlY3JldGtleWZvcmp3dGF1dGhlbnRpY2F0aW9uaW5hY2NvdW50c2VydmljZXJpZGVsaW5r}
+  secret: ${JWT_SECRET}
   expiration: ${JWT_EXPIRATION:86400000}
 
 springdoc:

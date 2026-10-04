@@ -17,7 +17,7 @@ public class RideResponse {
 
     private UUID rideId;
     private UUID passengerId;
-    private UUID driverId;
+    private Long driverId;
     private LocationDto pickupLocation;
     private LocationDto destinationLocation;
     private RideStatus status;

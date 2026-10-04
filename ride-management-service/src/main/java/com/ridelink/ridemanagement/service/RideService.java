@@ -16,7 +16,7 @@ public interface RideService {
 
     List<RideResponse> getRidesByPassengerId(UUID passengerId);
 
-    List<RideResponse> getRidesByDriverId(UUID driverId);
+    List<RideResponse> getRidesByDriverId(Long driverId);
 
     RideResponse assignDriver(UUID rideId, AssignDriverRequest request);
 

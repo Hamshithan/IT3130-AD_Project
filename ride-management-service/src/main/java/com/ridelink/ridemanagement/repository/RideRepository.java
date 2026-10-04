@@ -13,7 +13,7 @@ public interface RideRepository extends JpaRepository<Ride, UUID> {
 
     List<Ride> findByPassengerId(UUID passengerId);
 
-    List<Ride> findByDriverId(UUID driverId);
+    List<Ride> findByDriverId(Long driverId);
 
     List<Ride> findByStatus(RideStatus status);
 }

@@ -37,7 +37,7 @@ public class Ride {
     private UUID passengerId;
 
     @Column(name = "driver_id")
-    private UUID driverId;
+    private Long driverId;
 
     @Embedded
     @AttributeOverrides({
