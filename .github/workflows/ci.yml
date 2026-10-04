@@ -1,0 +1,86 @@
+name: RideLink CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  account-service:
+    name: Account Service - Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build and test Account Service
+        working-directory: account-service
+        run: mvn clean test
+
+  driver-vehicle-service:
+    name: Driver-Vehicle Service - Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build and test Driver-Vehicle Service
+        working-directory: driver-vehicle-service
+        run: mvn clean test
+
+  ride-management-service:
+    name: Ride Management Service - Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build and test Ride Management Service
+        working-directory: ride-management-service
+        run: mvn clean test
+
+  fare-payment-service:
+    name: Fare-Payment Service - Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build and test Fare-Payment Service
+        working-directory: fare-payment-service
+        run: mvn clean test
